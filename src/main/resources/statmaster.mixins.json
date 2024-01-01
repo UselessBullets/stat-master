@@ -1,0 +1,15 @@
+{
+  "required": true,
+  "minVersion": "0.8",
+  "package": "useless.statmaster.mixins",
+  "compatibilityLevel": "JAVA_8",
+  "mixins": [
+    "NetClientHandlerMixin"
+  ],
+  "client": [
+    "SaveHandlerBaseAccessor"
+  ],
+  "injectors": {
+    "defaultRequire": 1
+  }
+}
