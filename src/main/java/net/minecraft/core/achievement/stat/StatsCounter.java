@@ -14,10 +14,14 @@ import java.util.HashMap;
 import java.util.Map;
 
 import net.minecraft.client.Minecraft;
+import net.minecraft.client.entity.player.EntityClientPlayerMP;
 import net.minecraft.core.MD5String;
 import net.minecraft.core.achievement.Achievement;
 import net.minecraft.core.player.Session;
 import net.minecraft.core.world.World;
+import net.minecraft.core.world.save.SaveHandlerBase;
+import useless.statmaster.IHostName;
+import useless.statmaster.StatsContainer;
 import useless.statmaster.mixins.SaveHandlerBaseAccessor;
 
 public class StatsCounter {
@@ -41,7 +45,18 @@ public class StatsCounter {
 		if (world == null){
 			return null;
 		}
-		if (lastWorldName != null && lastWorldName.equals(((SaveHandlerBaseAccessor)world.getSaveHandler()).getWorldDirName())){
+		if (lastWorldName != null){
+			if ((mc.thePlayer != null && mc.thePlayer instanceof EntityClientPlayerMP)){
+				return worldStatContainer;
+			} else if (lastWorldName.equals(((SaveHandlerBaseAccessor)world.getSaveHandler()).getWorldDirName())) {
+				return worldStatContainer;
+			}
+		}
+		if (mc.thePlayer != null && mc.thePlayer instanceof EntityClientPlayerMP){
+			String hostName = ((IHostName)((EntityClientPlayerMP)mc.thePlayer).sendQueue).stat_master$getHostName();
+			File serverWorldStats = new File(statsFolder, "server/"+hostName);
+			FileUtils.createFolder(serverWorldStats);
+			this.worldStatContainer = new StatsContainer(session, serverWorldStats);
 			return worldStatContainer;
 		}
 		lastWorldName = ((SaveHandlerBaseAccessor)world.getSaveHandler()).getWorldDirName();

@@ -4,9 +4,10 @@
   "package": "useless.statmaster.mixins",
   "compatibilityLevel": "JAVA_8",
   "mixins": [
-    "SaveHandlerBaseAccessor"
+    "NetClientHandlerMixin"
   ],
   "client": [
+    "SaveHandlerBaseAccessor"
   ],
   "injectors": {
     "defaultRequire": 1

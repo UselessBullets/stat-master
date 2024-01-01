@@ -8,6 +8,7 @@
   "authors": [
     "Useless"
   ],
+	"icon": "icon.png",
   "contact": {
     "homepage": "",
     "sources": ""
@@ -26,5 +27,8 @@
     "fabricloader": ">=0.13.3"
   },
   "suggests": {
-  }
+  },
+	"custom": {
+		"modmenu:clientsideOnly": true
+	}
 }

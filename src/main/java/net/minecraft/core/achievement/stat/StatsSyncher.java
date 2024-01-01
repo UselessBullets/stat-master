@@ -7,6 +7,7 @@ import java.io.PrintWriter;
 import java.util.Map;
 
 import net.minecraft.core.player.Session;
+import useless.statmaster.StatsContainer;
 
 public class StatsSyncher {
 	private volatile boolean busy = false;

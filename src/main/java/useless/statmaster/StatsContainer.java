@@ -1,6 +1,8 @@
-package net.minecraft.core.achievement.stat;
+package useless.statmaster;
 
 import net.minecraft.core.achievement.Achievement;
+import net.minecraft.core.achievement.stat.Stat;
+import net.minecraft.core.achievement.stat.StatsSyncher;
 import net.minecraft.core.player.Session;
 
 import java.io.File;
